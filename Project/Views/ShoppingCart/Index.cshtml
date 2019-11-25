@@ -1,0 +1,168 @@
+﻿@using Project.Models.ShoppingCart
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Cart mycart = ViewBag.MyCart;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white shadow-sm">
+                    <li class="breadcrumb-item"><a href="index.html" class="no-underline">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-9 mt-3 mb-3">
+            <div class="shopping-cart bg-white rounded shadow-sm p-5">
+                <div class="shopping-cart-title display-4 text-primary pt-2">Shopping Cart</div>
+                <div class="shopping-cart-content text-muted py-3">You currently have @((mycart != null) ? mycart.NumberOfItems : 0) item(s) in your cart.</div>
+                <div class="shopping-cart-table pt-2 pb-3">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Sub Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart">
+                            @if (mycart != null)
+                            {
+                                foreach (var item in mycart)
+                                {
+                                    <tr scope="row" data-id="@item.Id">
+                                        <td class="align-middle"><img src="@item.ImageUrl" alt="product" class="img-fluid" width="50px" height="50px"></td>
+                                        <td class="align-middle"><a href="/Shop/Details/@item.Id">@item.ProductName</a></td>
+                                        <td class="align-middle">@item.Quantity</td>
+                                        <td class="align-middle">$@item.UnitPrice</td>
+                                        <td class="align-middle">@item.SizeId</td>
+                                        <td class="align-middle">
+                                            <input type="button" class="btn btn-primary" value="Delete"/>
+                                        </td>
+                                        <td class="align-middle">$@item.Subtotal</td>
+                                    </tr>
+
+                                }
+                            }
+                            <tr scope="row">
+                                <td colspan="6" class="align-middle">Total</td>
+                                <td class="align-middle" id="cartTotal">$@((mycart != null) ? mycart.TotalAmount : 0F)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="shopping-cart-footer">
+                    <div class="row">
+                        <div class="col">
+                            <a href="#" class="btn btn-outline-dark"><i class="fas fa-angle-left"></i> Continue Shopping</a>
+                        </div>
+                        <div class="col clearfix">
+                            <a href="#" class="btn btn-success ml-3 float-right">Proceed to checkout <i class="fas fa-angle-right"></i></a>
+                            <a href="#" class="btn btn-outline-dark float-right"><i class="fas fa-sync-alt"></i> Update Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 my-4">
+                    <div class="like-product bg-white shadow-sm rounded py-3 px-4 my-3">
+                        <h4 class=" font-weight-bold">You may also like these Products</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="likeproducts">
+                @*<div class="col">
+                    <img src="admin_area/product_images/product.jpg" alt="product" class="img-fluid img-responsive shadow-sm">
+                </div>
+                <div class="col">
+                    <img src="admin_area/product_images/product.jpg" alt="product" class="img-fluid img-responsive shadow-sm">
+                </div>
+                <div class="col">
+                    <img src="admin_area/product_images/product.jpg" alt="product" class="img-fluid img-responsive shadow-sm">
+                </div>
+                <div class="col">
+                    <img src="admin_area/product_images/product.jpg" alt="product" class="img-fluid img-responsive shadow-sm">
+                </div>*@
+            </div>
+        </div>
+        <div class="col-3 mt-3">
+            <div class="card shadow-sm p-2">
+                <div class="card-body">
+                    <h2 class="card-title">Order Summary</h2>
+                    <p class="card-text text-muted line-height py-2 text-justify">Shippping and additional costs are calculated based on the values you have entered</p>
+                    <table class="table">
+                        <tr>
+                            <th class="align-middle text-left">Order Subtotal</th>
+                            <td class="align-middle text-center">$@((mycart != null) ? mycart.TotalAmount : 0F)</td>
+                        </tr>
+                        <tr>
+                            <th class="align-middle text-left">Shipping and handling</th>
+                            <td class="align-middle text-center">$0.00</td>
+                        </tr>
+                        <tr>
+                            <th class="align-middle text-left">Tax</th>
+                            <td class="align-middle text-center">$0.00</td>
+                        </tr>
+                        <tr>
+                            <th class="align-middle text-left">Total</th>
+                            <td class="align-middle text-center">$200.00</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section getCartForm{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var prodid = $("#cart tr:first").attr("data-id");
+            var productrow = "";
+            alert("product id :" + prodid);
+            $("#cart tr td input").click(function () {
+                var row = $(this).parent().parent();
+                var id = row.attr("data-id"); 
+                $.ajax({
+                    type: "POST",
+                    url: "/ShoppingCart/Delete/" + id,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8"
+                });
+                location.reload();
+            })
+            if (prodid != null) {
+                $.ajax({
+                    type: "GET",
+                    url: "/ShoppingCart/Get/" + prodid,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (product) {
+                        $(this).each(product,function (index, product) {
+                            console.log(index);
+                            console.log(product.id);
+                            productrow += "<div class='col'>" +
+                                "<img src=" + product.ProductImg1 + " alt=" + product.ProductTitle + " class='img-fluid img-responsive shadow-sm'>"
+                                + "</div>";
+                        })
+                        $("#likeproducts").append(productrow);
+
+                        //console.log(data);
+                    }
+
+                });
+            }
+        })
+
+    </script>
+}

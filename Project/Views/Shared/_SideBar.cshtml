@@ -1,0 +1,36 @@
+﻿@using Project.Models
+@model SideBarViewModel
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm mt-3">
+            <div class="card-header font-weight-bold">
+                Products Categories
+            </div>
+            <div class="card-body">
+                <ul class="nav flex-column">
+                    @foreach (var prod in Model.productcategories)
+                    {
+                        <li class="nav-item text-tranform py-2"><a href="@Url.Action("ByProductCategory","Shop", new { id = prod.Id})" class="nav-link">@prod.ProductCategoryTitle</a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card  shadow-sm mt-4">
+            <div class="card-header font-weight-bold">
+                Categories
+            </div>
+            <div class="card-body">
+                <ul class="nav flex-column">
+                    @foreach (var cat in Model.categories)
+                    {
+                        <li class="nav-item text-tranform py-2"><a href="@Url.Action("ByCategory","Shop",new { id = cat.Id})" class="nav-link">@cat.CategoryTitle</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+﻿@using Project.Models
+@model RegisterCustomerViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-white shadow-sm">
+                        <li class="breadcrumb-item"><a href="index.html" class="no-underline">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Register</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                @Html.Partial("_SideBar", Model.sidebar)
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col mt-3">
+                        <div class="card shadow-sm mb-5">
+                            <div class="card-header py-5">
+                                <h1 class="card-title text-center display-4 font-weight-bold">Register A New Account</h1>
+                            </div>
+                            <div class="card-body p-5">
+                                <div class="row">
+                                    <div class="col">
+
+                                        @using (Html.BeginForm("AddCustomer", "Register", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerName,"Name", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.customer.CustomerName,"Name", new { @class = "form-control", placeholder = "Enter Name" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerName)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerEmail,"Email", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.customer.CustomerEmail,"Email", new { @class = "form-control", placeholder = "Enter Email", type = "email" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerEmail)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerPass,"Password", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.customer.CustomerPass,"Password", new { @class = "form-control", placeholder = "Enter Password", type = "password" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerPass)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerCountry,"Country", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.customer.CustomerCountry,"Country", new { @class = "form-control", placeholder = "Enter Country" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerCountry)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerCity,"City", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.customer.CustomerCity,"City", new { @class = "form-control", placeholder = "Enter City" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerCity)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerContact,"Contact", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.customer.CustomerContact,"Contact", new { @class = "form-control", placeholder = "Enter Contact" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerContact)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerAddress,"Address", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.customer.CustomerAddress,"Address", new { @class = "form-control", placeholder = "Enter Address" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerAddress)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.customer.CustomerImage,"Upload your Photograph", new { @class = "control-label" })                                                
+                                                @Html.TextBoxFor(a => a.customer.CustomerImage,"Upload your Photograph", new { @class = "form-control-file p-2", placeholder = "No file chosen", type = "file" })
+                                                @Html.ValidationMessageFor(a => a.customer.CustomerImage)
+                                            </div>
+                                            <div class="row pt-3">
+                                                <div class="col text-center">
+                                                    <button type="submit" class="btn btn-success"><i class="fas fa-user"></i> Register</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,88 @@
+﻿@using Project.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-white shadow-sm">
+                        <li class="breadcrumb-item"><a href="index.html" class="no-underline">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                @Html.Partial("_SideBar",Model.sidebar)
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col mt-3">
+                        <div class="card shadow-sm mb-5">
+                            <div class="card-header py-5">
+                                <h1 class="card-title text-center display-4 font-weight-bold">Login</h1>
+                                <h4 class="card-title text-center display-5">Already our customer?</h4>
+                                <p class="card-text text-left text-muted line-height">
+                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames
+                                    ac turpis egestas.Vestibulum tortor quam,feugiat vitae,ultricies eget,tempor
+                                    site amet, ante.Donec eu libero sit amet quam egestas semper.Aenean ultricies
+                                    mi vitae est.Mauris placerat eleifend leo
+                                </p>
+                            </div>
+                            <div class="card-body p-5">
+                                <div class="row">
+                                    <div class="col">
+                                        @using (Html.BeginForm("VerifyUser", "Login", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.Email, "Email", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.Email, "Email", new { @class = "form-control", placeholder = "Enter Email", type = "email" })
+                                                @Html.ValidationMessageFor(a => a.Email)
+                                            </div>
+                                            <div class="form-group py-1">
+                                                @Html.LabelFor(a => a.Password, "Password", new { @class = "control-label" })
+                                                @Html.TextBoxFor(a => a.Password, "Password", new { @class = "form-control", placeholder = "Enter Email", type = "password" })
+                                                @Html.ValidationMessageFor(a => a.Password)
+                                            </div>
+                                            <div class="row pt-3">
+                                                <div class="col text-center">
+                                                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
+                                                    <h3 class="display-5 pt-3 pb-1"><a href="customer_register.html" class="nav-link">New? Register Here</a></h3>
+                                                </div>
+                                            </div>
+                                        }
+
+
+
+                                        @*<form>
+                                            <div class="form-group py-1">
+                                                <label for="loginEmail">Email</label>
+                                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter Email">
+                                            </div>
+                                            <div class="form-group py-1">
+                                                <label for="loginPassword">Password</label>
+                                                <input type="password" class="form-control" id="loginPassword" placeholder="Enter Password">
+                                            </div>
+                                            <div class="row pt-3">
+                                                <div class="col text-center">
+                                                    <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Send Message</button>
+                                                    <h3 class="display-5 pt-3 pb-1"><a href="customer_register.html" class="nav-link">New? Register Here</a></h3>
+                                                </div>
+                                            </div>
+                                        </form>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

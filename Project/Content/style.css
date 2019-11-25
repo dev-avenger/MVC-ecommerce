@@ -1,0 +1,394 @@
+﻿/*
+Template : E commerce Store in php and mysql with bootstrap 4
+Author Name: Faisal Nadeem
+Theme URI : http://www.computerfever.com
+Version: 1.0
+*/
+
+/* General  Styles*/
+
+* {
+    box-sizing: border-box;
+}
+
+
+html, body {
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+    margin:0;
+    padding:0px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #333333;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+}
+
+.header-background {
+    background-color: #323232;
+    padding: 5px;
+    color: white;
+}
+
+.header-nav {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    text-align: right;
+}
+
+.header-nav-item {
+    display: inline-block;
+    position: relative;
+    font-size: 12px;
+}
+
+ul > li + li.header-nav-item::before {
+    content: "|\00a0";
+    color: white;
+    padding: 0 2px;
+    position: absolute;
+    top: 10px;
+    left: -4px;
+}
+
+.header-nav-link {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+#navbarSupportedContent > ul.navbar-nav > li.nav-item > a.nav-link {
+    text-transform: uppercase;
+}
+
+
+
+.header-nav-link:hover {
+    padding: 10px;
+    color: red;
+    text-decoration: none;
+}
+
+#sideNav {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.cart-count {
+    float: left;
+}
+
+.link-color {
+    font-weight: bold;
+}
+
+    .link-color:hover {
+        color: white;
+    }
+
+.nav-item-modified {
+    white-space: nowrap;
+}
+
+    .nav-item-modified:hover {
+        background-color: #7f7f7f;
+        color: white;
+    }
+
+/* Carousel */
+
+#main-carousel {
+    margin-top: 20px;
+}
+
+/* Banner */
+
+
+.banner {
+    margin-top: 40px;
+    box-shadow: 0px 0px 1px 2px rgba(94.5,94.5,94.5,0.1);
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    height: 150px;
+    background-color: white;
+    padding: 20px;
+}
+
+    .banner > .fas, .banner > .fa {
+        font-size: 100px;
+    }
+
+.fa-heart, .fa-hand-holding-usd, .fa-thumbs-up {
+    color: rgba(0,123,182,0.5);
+    opacity: 0.2;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.banner-title {
+    color: rgba(0,123,182,1);
+    font-family: serif;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bold;
+    text-shadow: 0px 0px 2px 4px rgba(94.5,94.5,94.5,1);
+    text-transform: uppercase;
+}
+
+.banner-text {
+    padding-top: 20px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+#offer > div.row > div.col {
+    background-color: white;
+    margin: 40px 0px;
+    height: 120px;
+    text-align: center;
+    box-shadow: 0px 0px 1px 2px rgba(94.5,94.5,94.5,0.1);
+}
+
+.offer-text {
+    font-size: 30px;
+    text-transform: uppercase;
+    display: block;
+    line-height: normal;
+    padding: 40px;
+    color: rgba(0,123,182,1);
+    font-style: italic;
+    font-family: cursive;
+}
+
+/* Product Catalog */
+
+.product-card {
+    box-shadow: 0px 0px 1px 2px rgba(94.5,94.5,94.5,0.1);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.product-card-body {
+    text-align: center;
+    font-family: serif;
+    text-transform: uppercase;
+}
+
+.product-card-footer {
+    text-transform: uppercase;
+    padding: 10px 0px;
+}
+
+.product-card-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+}
+
+.product-card-content {
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 18px;
+}
+
+.prouct-card-footer {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
+/* Footer  Menu */
+
+footer {
+    background-color: #e5e5e5;
+    margin-top: 30px;
+    padding: 50px 0px;
+    box-shadow: 0px 0px 1px 2px rgba(0,0,0,0.07);
+}
+
+#subfooter {
+    background-color: #323232;
+    color: white;
+    padding: 20px 0px 5px 0px;
+}
+
+.footer-menu {
+    font-family: sans-serif;
+}
+
+.footer-list-heading {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.footer-main-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+}
+
+.footer-list-item {
+    text-decoration: none;
+    line-height: 20px;
+}
+
+.footer-list-link {
+    color: #4c4c4c;
+    text-transform:capitalize;
+}
+
+    .footer-list-link:hover {
+        text-decoration: none;
+        color: #7f7f7f;
+    }
+
+.footer-list-subheading {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.submenu {
+    padding-top: 40px;
+}
+
+.social {
+    padding-top: 40px;
+}
+
+.social-main-list {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.social-menu-item {
+    display: inline-block;
+    padding: 5px;
+}
+/* Social Media Icon Coloring*/
+.fab, .fas {
+    font-size: 36px;
+}
+
+.fa-facebook-square {
+    color: rgba(59,89,152,1);
+}
+
+.fa-twitter-square {
+    color: rgba(0,172,237,1);
+}
+
+.fa-instagram {
+    color: rgba(81,127,164,1);
+}
+
+.fa-google-plus-square {
+    color: rgba(221,75,57,1);
+}
+
+.fa-youtube-square {
+    color: rgba(255,0,0,1);
+}
+
+/* Social Media Icon Coloring Hover Effect*/
+
+.fa-facebook-square:hover {
+    color: rgba(59,89,152,0.5);
+}
+
+.fa-twitter-square:hover {
+    color: rgba(0,172,237,0.5);
+}
+
+.fa-instagram:hover {
+    color: rgba(81,127,164,0.5);
+}
+
+.fa-google-plus-square:hover {
+    color: rgba(221,75,57,0.5);
+}
+
+.fa-youtube-square:hover {
+    color: rgba(255,0,0,0.5);
+}
+/*  Subfooter */
+
+.developed {
+    text-decoration: none;
+    text-align: right;
+}
+
+/*-----------------*/
+/*Shop Page CSS */
+/*----------------*/
+
+.text-tranform {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.no-underline:hover {
+    text-decoration: none;
+}
+
+.shop-page-title {
+    text-transform:capitalize;
+}
+/*-----------------*/
+/*Details Page CSS*/
+/*-----------------*/
+/* -----Product Details Banner----- */
+.banner-style {
+    line-height: 25px;
+}
+
+/*-----------------*/
+/*Shopping Cart Page CSS*/
+/*-----------------*/
+
+
+/*  shopping button icons*/
+
+.fa-angle-left, .fa-angle-right, .fa-sync-alt {
+    font-size: 15px;
+}
+
+.line-height {
+    line-height: 18px;
+}
+
+/*-----------------*/
+/*Contact Us Page CSS*/
+/*-----------------*/
+
+
+.fa-user {
+    font-size: 15px;
+}
+
+
+/*-----------------*/
+/*Login Page CSS*/
+/*-----------------*/
+
+.fa-sign-in-alt {
+    font-size: 15px;
+}
+
+.has-error {
+    box-shadow: 0px 0px 1px 1px red inset;
+}
+
+.has-success {
+    box-shadow: 0px 0px 1px 1px green inset;
+}

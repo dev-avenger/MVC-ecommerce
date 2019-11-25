@@ -1,0 +1,220 @@
+﻿@using EntityLib.EntityClass
+@using Project.Models
+@using Project.Models.ShoppingCart
+
+@{
+    List<CategoryViewModel> categories = ViewBag.Categories;
+    CompanyAddressViewModel companyaddress = ViewBag.CompanyAddress;
+    SocialMediaLinkViewModel socialmedialink = ViewBag.SocialMediaLink;
+    Cart mycart = ViewBag.MyCart;
+    string user = ViewBag.UserName;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <div class="topnav header-background">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        @if (user != null)
+                        {
+                            <a href="#" class="btn btn-success btn-sm">welcome:<span>@user.ToString()</span></a>
+
+                        }
+                        <span class="text-small">Shopping Cart Total Price :</span>
+                        <span id="cart-total-price">@((mycart != null) ? mycart.TotalAmount : 0F)</span>
+                        <span class="text-small">
+                            ,Total Items:
+                        </span>
+                        <span class="items-count">@((mycart != null) ? mycart.NumberOfItems : 0)</span>
+                    </div>
+                    <div class="col">
+                        <ul class="header-nav" id="menu">
+                            <li class="header-nav-item">@Html.ActionLink("Register", "Index", "Register", null, new { @class = "header-nav-link" })</li>
+                            @if (user != null)
+                            {
+                                <li class="header-nav-item">@Html.ActionLink("My Account", "Index", "MyAccount", null, new { @class = "header-nav-link" })</li>
+                            }
+                            <li class="header-nav-item">@Html.ActionLink("Go to Cart", "Index", "ShoppingCart", null, new { @class = "header-nav-link" })</li>
+                            @if (user != null)
+                            {
+                                <li class="header-nav-item">@Html.ActionLink("Logoff", "Logout", "MyAccount", null, new { @class = "header-nav-link" })</li>
+
+                            }
+                            else
+                            {
+                                <li class="header-nav-item">@Html.ActionLink("Login", "Index", "Login", null, new { @class = "header-nav-link" })</li>
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mainnav bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            @Html.ActionLink("ComputerFever", "Index", "Home", null, new { @class = "navbar-brand" })
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto align-content-center">
+                                    <li class="nav-item nav-item-modified p-3 @(ViewContext.RouteData.Values["Controller"].ToString()=="Home"?"active":"")">
+                                        @Html.ActionLink("home", "Index", "Home", null, new { @class = "nav-link link-color" })<span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item nav-item-modified p-3 @(ViewContext.RouteData.Values["Controller"].ToString()=="Shop"?"active":"")">
+                                        @Html.ActionLink("shop", "Index", "Shop", null, new { @class = "nav-link link-color" })
+                                    </li>
+                                    @if (user != null)
+                                    {
+                                        <li class="nav-item nav-item-modified p-3 @(ViewContext.RouteData.Values["Controller"].ToString()=="MyAccount"?"active":"")">
+                                            @Html.ActionLink("my account", "Index", "MyAccount", null, new { @class = "nav-link link-color" })
+                                        </li>
+                                    }
+                                    <li class="nav-item nav-item-modified p-3 @(ViewContext.RouteData.Values["Controller"].ToString()=="ShoppingCart"?"active":"")">
+                                        @Html.ActionLink("shopping cart", "Index", "ShoppingCart", null, new { @class = "nav-link link-color" })
+                                    </li>
+                                    <li class="nav-item nav-item-modified p-3 @(ViewContext.RouteData.Values["Controller"].ToString()=="ContactUs"?"active":"")">
+                                        @Html.ActionLink("contact us", "Index", "ContactUs", null, new { @class = "nav-link link-color" })
+                                    </li>
+                                </ul>
+                                <div id="sideNav">
+                                    <div class="cart-count float-right">
+                                        <a href="#" class="btn btn-success float-right"><i class="fa fa-shopping-cart"></i><span class="cart-item"> @((mycart != null) ? mycart.NumberOfItems : 0) </span>Items in cart</a>
+                                    </div>
+                                    <form class="form-inline my-2 my-lg-0 collapse navbar-collapse">
+                                        <button class="btn btn-success mx-2" type="button" data-toggle="collapse" data-target="#searchitem" aria-controls="searchitem" aria-expanded="false" aria-label="Toggle navigation">
+                                            <i class="fa fa-search p-1"></i>
+                                        </button>
+                                        <div class="input-group navbar-toggler" id="searchitem">
+                                            <div class="input-group-append">
+                                                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                                <button class="btn btn-success" type="submit">Search</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col footer-menu">
+                    <ul class="footer-main-list">
+                        <h2 class="footer-list-heading">Pages</h2>
+                        <li class="footer-list-item">
+                            @Html.ActionLink("Shopping Cart", "Index", "ShoppingCart", null, new { @class = "footer-list-link" })
+                        </li>
+                        <li class="footer-list-item">
+                            @Html.ActionLink("Contact Us", "Index", "ContactUs", null, new { @class = "footer-list-link" })
+                        </li>
+                        <li class="footer-list-item">
+                            @Html.ActionLink("Shop", "Index", "Shop", null, new { @class = "footer-list-link" })
+                        </li>
+                    </ul>
+                    <ul class="footer-main-list submenu">
+                        <h2 class="footer-list-heading">User section</h2>
+                        @if (user != null)
+                        {
+                            <li class="footer-list-item">
+                                @Html.ActionLink("My Account", "Index", "My Account", null, new { @class = "footer-list-link" })
+                            </li>
+                        }
+                        <li class="footer-list-item">
+                            @Html.ActionLink("Register", "Index", "Register", null, new { @class = "footer-list-link" })
+                        </li>
+                    </ul>
+                </div>
+                <div class="col footer-menu">
+                    <ul class="footer-main-list">
+                        <h2 class="footer-list-heading">Top categories</h2>
+                        @foreach (var cat in categories)
+                            {
+                                <li class="footer-list-item"><a href="@cat.CategoryLink" class="footer-list-link">@cat.CategoryTitle</a></li>
+                            }
+                    </ul>
+                </div>
+                <div class="col footer-menu">
+                    <ul class="footer-main-list">
+                        <h2 class="footer-list-heading">Where to find us</h2>
+                        <h4 class="footer-list-subheading">@companyaddress.CompanyName</h4>
+                        <li class="footer-list-item">@companyaddress.ShopNumber</li>
+                        <li class="footer-list-item">@companyaddress.Area</li>
+                        <li class="footer-list-item">@companyaddress.City, @companyaddress.Country</li>
+                        <li class="footer-list-item">@companyaddress.PhoneNumber</li>
+                        <li class="footer-list-item">@companyaddress.MobileNumber</li>
+                        <li class="footer-list-item">@companyaddress.EmailAddress</li>
+                        <li class="footer-list-item pt-3">
+                            @Html.ActionLink("Go to contact page", "Index", "ContactUs", null, new { @class = "footer-list-link" })
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col footer-menu">
+                    <h1 class="footer-list-heading">Get the news</h1>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames acturpis egestas</p>
+                    <form class="input-group">
+                        <input type="text" class="form-control">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-light">Subscribe</button>
+                        </div>
+                    </form>
+                    <div class="social">
+                        <h2 class="footer-list-heading">Stay in touch</h2>
+                        <ul class="social-main-list">
+                            <li class="social-menu-item"><a href="@socialmedialink.facebook" class="footer-list-link"><i class="fab fa-facebook-square"></i></a></li>
+                            <li class="social-menu-item"><a href="@socialmedialink.twitter" class="footer-list-link"><i class="fab fa-twitter-square"></i></a></li>
+                            <li class="social-menu-item"><a href="@socialmedialink.instagram" class="footer-list-link"><i class="fab fa-instagram"></i></a></li>
+                            <li class="social-menu-item"><a href="@socialmedialink.googleplus" class="footer-list-link"><i class="fab fa-google-plus-square"></i></a></li>
+                            <li class="social-menu-item"><a href="@socialmedialink.youtube" class="footer-list-link"><i class="fab fa-youtube-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="container-fluid" id="subfooter">
+        <div class="row">
+            <div class="col">
+                <div class="container copyright">
+                    <div class="row">
+                        <div class="col">
+                            <p>&copy; 2015 Copyright ComputerFever</p>
+                        </div>
+                        <div class="col developed">
+                            <p>Developed by <a href="#">Softtech</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("getCartForm", false)
+    @RenderSection("PasswordValidate",false)
+
+    </body>
+</html>

@@ -1,0 +1,85 @@
+﻿@using Project.Models
+@model ShopViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white shadow-sm">
+                    <li class="breadcrumb-item"><a href="index.html" class="no-underline">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            @Html.Partial("_SideBar", Model.sidebar) 
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col mt-3">
+                    <div class="shop-page-intro bg-white shadow-sm rounded p-4">
+                        <h1 class="display-4 text-primary">Shop</h1>
+                        <p class="text-lead line-height">
+                            It is a long established fact that a reader will be distracted by the readable content of a page
+                            when looking at its layout.The point of using Lorem Ipsum is that it has a more-or-less normal
+                            distribution of letters,as opposed to using.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+
+                @foreach (var product in Model.products)
+                {
+                    if (Model.products.IndexOf(product) <= 5)
+                    {
+                        <div class="col-4">
+                            <div class="product-card">
+                                <img src="../@product.ProductImg1" alt="@product.ProductTitle" class="img-fluid img-responsive">
+                                <div class="product-card-body">
+                                    <div class="product-card-title">@product.ProductTitle</div>
+                                    <div class="product-card-content">$@product.ProductPrice</div>
+                                    <div class="product-card-footer">
+                                        <a href='@Url.Action("Details", "Shop", new { id = @product.Id })' class="btn btn-outline-dark btn-sm">view detail</a>
+                                        <a href='@Url.Action("Details","Shop",new { id =@product.Id })' class="btn btn-success btn-sm"><i class="fa fa-shopping-cart"></i> add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+
+            </div>
+            <div class="row my-3">
+                <div class="col text-center">
+                    <nav aria-label="Product Pagination" class="d-inline-block">
+                        <ul class="pagination">
+                            <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+</div>
+</div>

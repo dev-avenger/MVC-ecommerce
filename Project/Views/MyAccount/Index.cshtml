@@ -1,0 +1,261 @@
+﻿@using Project.Models
+@model MyAccountViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-white shadow-sm">
+                    <li class="breadcrumb-item"><a href="index.html" class="no-underline">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-3">
+            <div class="customer-card shadow-sm">
+                <div class="card">
+                    <img src="customer_images/brock_lesnar.jpg" alt="brock_lesnar" class="card-img-top">
+                    <div class="card-header">
+                        <div class="customerName text-center pt-3 pb-2">
+                            <span class="text-lead font-weight-bold">Name :</span>
+                            <span class="text-lead font-weight-bold">Brock Lesnar</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="nav flex-column nav-pills" id="myaccounttab" role="tablist" aria-orientation="vertical">
+                                    <a href="#myorders" class="nav-link active" data-toggle="pill" id="myorders-tab" role="tab" aria-controls="myorders" aria-selected="true"><i class="fas fa-list"></i> My Orders</a>
+                                    <a href="#payOffline" class="nav-link" data-toggle="pill" id="payOffline-tab" role="tab" aria-controls="payOffline" aria-selected="false"><i class="fas fa-bolt"></i> Pay Offline</a>
+                                    <a href="#editAccount" class="nav-link" data-toggle="pill" id="editAccount-tab" role="tab" aria-controls="editAccount" aria-selected="false"><i class="fas fa-pencil-alt"></i> Edit Account</a>
+                                    <a href="#deleteAccount" class="nav-link" data-toggle="pill" id="deleteAccount-tab" role="tab" aria-controls="deleteAccount" aria-selected="false"><i class="far fa-trash-alt"></i> Delete Account</a>
+                                    <a href="#logOut" class="nav-link" data-toggle="pill" id="logOut-tab" role="tab" aria-controls="logOut" aria-selected="false"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="tab-content" id="myaccount-tabContent">
+                <div class="tab-pane fade show active" id="myorders" role="tabpanel" aria-labelledby="myorders-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="orders bg-white shadow-sm p-5 text-center">
+                                <div class="orders-header">
+                                    <h1 class="display-4 font-weight-bold py-2">My Orders</h1>
+                                    <h3 class="display-5 pb-2">Your orders on one place.</h3>
+                                    <p class="text-lead">If you have any questions,please feel free to contact us, our customer service center is working for you 24/7.</p>
+                                    <hr>
+                                </div>
+                                <div class="orders-body pt-2 pb-3">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="align-middle">Sr.</th>
+                                                <th class="align-middle">Due Amount</th>
+                                                <th class="align-middle">Invoice No.</th>
+                                                <th class="align-middle">Qty</th>
+                                                <th class="align-middle">Size</th>
+                                                <th class="align-middle">Order Date</th>
+                                                <th class="align-middle">Paid/Unpaid</th>
+                                                <th class="align-middle">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle">1</td>
+                                                <td class="align-middle">$60</td>
+                                                <td class="align-middle">666963525</td>
+                                                <td class="align-middle">1</td>
+                                                <td class="align-middle">Small</td>
+                                                <td class="align-middle">2016-10-11</td>
+                                                <td class="align-middle">Unpaid</td>
+                                                <td class="align-middle"><a href="confirm.html" class="btn btn-success">Confirm If Paid</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">2</td>
+                                                <td class="align-middle">$100</td>
+                                                <td class="align-middle">666963525</td>
+                                                <td class="align-middle">2</td>
+                                                <td class="align-middle">Medium</td>
+                                                <td class="align-middle">2016-10-11</td>
+                                                <td class="align-middle">Unpaid</td>
+                                                <td class="align-middle"><a href="confirm.html" class="btn btn-success">Confirm If Paid</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="payOffline" role="tabpanel" aria-labelledby="payOffline-tab">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="payoffline bg-white shadow-sm p-5">
+                                <div class="payoffline-header">
+                                    <h1 class="display-4 font-weight-bold text-center py-2">Pay Offline Using Method</h1>
+                                    <p class="text-lead text-center">If you have any questions,please feel free to contact us, our customer service center is working for you 24/7.</p>
+                                    <hr>
+                                </div>
+                                <div class="payoffline-body pt-2 pb-3">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th class="align-middle">Bank Account Details</th>
+                                                <th class="align-middle">Easy Paisa, UBL Omni, MobiCash Details</th>
+                                                <th class="align-middle">Western Union Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <ul class="list-group list-group-flush">
+                                                        @foreach (var bank in Model.paymentviewmodel.bankaccountdetails)
+                                                        {
+                                                            <li class="list-group-item">Bank Name: @bank.BankName</li>
+                                                            <li class="list-group-item">AccountNo: @bank.AccountNumber</li>
+                                                            <li class="list-group-item">Branch Code: @bank.BranchCode</li>
+                                                            <li class="list-group-item">Branch Name: @bank.BranchName</li>
+
+                                                        }
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <ul class="list-group list-group-flush">
+                                                        @foreach (var easypaisa in Model.paymentviewmodel.easypaisadetails)
+                                                        {
+                                                            <li class="list-group-item">Type : @easypaisa.CategoryName</li>
+                                                            <li class="list-group-item">NIC : @easypaisa.NICNumber</li>
+                                                            <li class="list-group-item">MobileNo.: @easypaisa.MobileNumber</li>
+                                                            <li class="list-group-item">Account Name: @easypaisa.AccountName</li>
+                                                        }
+
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <ul class="list-group list-group-flush">
+                                                        @foreach (var westernunion in Model.paymentviewmodel.westernuniondetails)
+                                                        {
+                                                            <li class="list-group-item">Full Name: @westernunion.FullName</li>
+                                                            <li class="list-group-item">MobileNo.: @westernunion.MobileNumber</li>
+                                                            <li class="list-group-item">NIC No: @westernunion.NICNumber</li>
+                                                            <li class="list-group-item">Account Name: @westernunion.AccountName</li>
+                                                            <li class="list-group-item">Country: @westernunion.Country</li>
+                                                        }
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="editAccount" role="tabpanel" aria-labelledby="editAccount-tab">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow-sm mb-5">
+                                <div class="card-header py-5">
+                                    <h1 class="card-title text-center display-4 font-weight-bold">Edit Your Account</h1>
+                                </div>
+                                <div class="card-body p-5">
+                                    <div class="row">
+                                        <div class="col">
+                                            @using (Html.BeginForm("UpdateCustomer", "MyAccount", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <div class="form-group py-1">
+                                                    @Html.TextBoxFor(a => a.customer.CustomerId, Model.customer.CustomerId.ToString(), new { type = "hidden" })
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerName, "Name", new { @class = "control-label" })
+                                                    @Html.TextBoxFor(a => a.customer.CustomerName, Model.customer.CustomerName, new { @class = "form-control", placeholder = "Enter Name" })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerName)
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerEmail, "Email", new { @class = "control-label" })
+                                                    @Html.TextBoxFor(a => a.customer.CustomerEmail, Model.customer.CustomerEmail, new { @class = "form-control", placeholder = "Enter Email", type = "email", value = Model.customer.CustomerEmail })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerEmail)
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerPass, "Password", new { @class = "control-label" })
+                                                    @Html.TextBoxFor(a => a.customer.CustomerPass, Model.customer.CustomerPass, new { @class = "form-control", placeholder = "Enter Password", type = "password", value = Model.customer.CustomerPass })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerPass)
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerCountry, "Country", new { @class = "control-label" })
+                                                    @Html.TextBoxFor(a => a.customer.CustomerCountry, Model.customer.CustomerCountry, new { @class = "form-control", placeholder = "Enter Country", value = Model.customer.CustomerCountry })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerCountry)
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerCity, "City", new { @class = "control-label" })
+                                                    @Html.TextBoxFor(a => a.customer.CustomerCity, Model.customer.CustomerCity, new { @class = "form-control", placeholder = "Enter City", value = Model.customer.CustomerCity })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerCity)
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerContact, "Contact", new { @class = "control-label" })
+                                                    @Html.TextBoxFor(a => a.customer.CustomerContact, Model.customer.CustomerContact, new { @class = "form-control", placeholder = "Enter Contact", value = Model.customer.CustomerContact })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerContact)
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerAddress, "Address", new { @class = "control-label" })
+                                                    @Html.TextBoxFor(a => a.customer.CustomerAddress, Model.customer.CustomerAddress, new { @class = "form-control", placeholder = "Enter Address", value = Model.customer.CustomerAddress })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerAddress)
+                                                </div>
+                                                <div class="form-group py-1">
+                                                    @Html.LabelFor(a => a.customer.CustomerImage, "Upload your Photograph", new { @class = "control-label" })
+                                                    <img src="@Model.customer.CustomerImage" class="img-fluid" alt="@Model.customer.CustomerName" />
+                                                    @Html.TextBoxFor(a => a.customer.CustomerImage, Model.customer.CustomerImage, new { @class = "form-control-file p-2", placeholder = "No file chosen", type = "file", value = Model.customer.CustomerImage })
+                                                    @Html.ValidationMessageFor(a => a.customer.CustomerImage)
+                                                </div>
+                                                <div class="row pt-3">
+                                                    <div class="col text-center">
+                                                        <button type="submit" class="btn btn-success"><i class="fas fa-user"></i> Update Now</button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="deleteAccount" role="tabpanel" aria-labelledby="deleteAccount-tab">
+                    <div class="row">
+                        <div class="col">
+                            <div class="del-account text-center bg-white shadow-sm p-5">
+                                <h1>Do You Really Want To  Delete Your Account!</h1>
+                                    <input type="submit" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteCustomer","MyAccount",new { id = Model.customer.CustomerId})'">
+                                    <input type="submit" class="btn btn-success" value="No">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="logOut" role="tabpanel" aria-labelledby="logOut-tab" on>
+                    <div class="row">
+                        <div class="col">
+                            <div class="del-account text-center bg-white shadow-sm p-5">
+                                <h1>Do You Really Want To  Logout Your Account!</h1>
+                                <input type="submit" class="btn btn-danger" value="Yes" onclick="location.href='@Url.Action("Logout","MyAccount")'">
+                                <input type="submit" class="btn btn-success" value="No">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

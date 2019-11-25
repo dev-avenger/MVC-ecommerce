@@ -1,0 +1,366 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B7F820E-2A32-4E8A-A567-2EA793763B59}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntityLib</RootNamespace>
+    <AssemblyName>EntityLib</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessLayer\BusinessHandler.cs" />
+    <Compile Include="EntityClass\Admin.cs" />
+    <Compile Include="EntityClass\BankAccountDetail.cs" />
+    <Compile Include="EntityClass\CartItem.cs" />
+    <Compile Include="EntityClass\Category.cs" />
+    <Compile Include="EntityClass\CompanyAddress.cs" />
+    <Compile Include="EntityClass\ContactUs.cs" />
+    <Compile Include="EntityClass\Customer.cs" />
+    <Compile Include="EntityClass\CustomerOrder.cs" />
+    <Compile Include="EntityClass\EasyPaisaDetail.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\AdminConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\BankAccountDetailConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\CartItemConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\CategoryConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\CompanyAddressConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\ContactUsConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\CustomerConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\CustomerOrderConfigrations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\EasyPaisaDetailConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\PaymentConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\ProductCategoryConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\ProductConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\SizeConfiguration.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\SliderConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\SocialMediaLinkConfigurations.cs" />
+    <Compile Include="EntityClass\EntityConfigurations\WesternUnionDetailConfigurations.cs" />
+    <Compile Include="EntityClass\EntityContext.cs" />
+    <Compile Include="EntityClass\Payment.cs" />
+    <Compile Include="EntityClass\Product.cs" />
+    <Compile Include="EntityClass\ProductCategory.cs" />
+    <Compile Include="EntityClass\Size.cs" />
+    <Compile Include="EntityClass\Slider.cs" />
+    <Compile Include="EntityClass\SocialMediaLink.cs" />
+    <Compile Include="EntityClass\WesternUnionDetail.cs" />
+    <Compile Include="Migrations\201809152106431_CreateTablesWithRelationsInitial.cs" />
+    <Compile Include="Migrations\201809152106431_CreateTablesWithRelationsInitial.Designer.cs">
+      <DependentUpon>201809152106431_CreateTablesWithRelationsInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809171048401_seedCategory.cs" />
+    <Compile Include="Migrations\201809171048401_seedCategory.Designer.cs">
+      <DependentUpon>201809171048401_seedCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809171105302_seedProductCategory.cs" />
+    <Compile Include="Migrations\201809171105302_seedProductCategory.Designer.cs">
+      <DependentUpon>201809171105302_seedProductCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809171119026_seedSlider.cs" />
+    <Compile Include="Migrations\201809171119026_seedSlider.Designer.cs">
+      <DependentUpon>201809171119026_seedSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809171135459_seedProducts.cs" />
+    <Compile Include="Migrations\201809171135459_seedProducts.Designer.cs">
+      <DependentUpon>201809171135459_seedProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809192052520_AddContactUsTable.cs" />
+    <Compile Include="Migrations\201809192052520_AddContactUsTable.Designer.cs">
+      <DependentUpon>201809192052520_AddContactUsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810112042466_SizeClassandConfiguration.cs" />
+    <Compile Include="Migrations\201810112042466_SizeClassandConfiguration.Designer.cs">
+      <DependentUpon>201810112042466_SizeClassandConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810112117136_SizeRelationWithProduct.cs" />
+    <Compile Include="Migrations\201810112117136_SizeRelationWithProduct.Designer.cs">
+      <DependentUpon>201810112117136_SizeRelationWithProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810112122254_modificationsForProductNSize.cs" />
+    <Compile Include="Migrations\201810112122254_modificationsForProductNSize.Designer.cs">
+      <DependentUpon>201810112122254_modificationsForProductNSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810120716070_SeedSizeTable.cs" />
+    <Compile Include="Migrations\201810120716070_SeedSizeTable.Designer.cs">
+      <DependentUpon>201810120716070_SeedSizeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811172224362_PaymentMethodTables.cs" />
+    <Compile Include="Migrations\201811172224362_PaymentMethodTables.Designer.cs">
+      <DependentUpon>201811172224362_PaymentMethodTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811172226427_SeedBankAccoutDetail.cs" />
+    <Compile Include="Migrations\201811172226427_SeedBankAccoutDetail.Designer.cs">
+      <DependentUpon>201811172226427_SeedBankAccoutDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811172237401_SeedWesternUnionDetail.cs" />
+    <Compile Include="Migrations\201811172237401_SeedWesternUnionDetail.Designer.cs">
+      <DependentUpon>201811172237401_SeedWesternUnionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811172242042_SeedEasyPaisaDetail.cs" />
+    <Compile Include="Migrations\201811172242042_SeedEasyPaisaDetail.Designer.cs">
+      <DependentUpon>201811172242042_SeedEasyPaisaDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811180953527_AddCompanyAddressTable.cs" />
+    <Compile Include="Migrations\201811180953527_AddCompanyAddressTable.Designer.cs">
+      <DependentUpon>201811180953527_AddCompanyAddressTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811180955203_SeedCompanyAddressTable.cs" />
+    <Compile Include="Migrations\201811180955203_SeedCompanyAddressTable.Designer.cs">
+      <DependentUpon>201811180955203_SeedCompanyAddressTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811181022308_AddSocialMediaLinkTable.cs" />
+    <Compile Include="Migrations\201811181022308_AddSocialMediaLinkTable.Designer.cs">
+      <DependentUpon>201811181022308_AddSocialMediaLinkTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811181026023_AddCategorylinkColumnINCategory.cs" />
+    <Compile Include="Migrations\201811181026023_AddCategorylinkColumnINCategory.Designer.cs">
+      <DependentUpon>201811181026023_AddCategorylinkColumnINCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811181027425_AddCategorylinkColumnINCategoryProperty.cs" />
+    <Compile Include="Migrations\201811181027425_AddCategorylinkColumnINCategoryProperty.Designer.cs">
+      <DependentUpon>201811181027425_AddCategorylinkColumnINCategoryProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811181033129_SeedCategoryLinkINCategory.cs" />
+    <Compile Include="Migrations\201811181033129_SeedCategoryLinkINCategory.Designer.cs">
+      <DependentUpon>201811181033129_SeedCategoryLinkINCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811181033432_SeedCategoryLinkINCategoryTrue.cs" />
+    <Compile Include="Migrations\201811181033432_SeedCategoryLinkINCategoryTrue.Designer.cs">
+      <DependentUpon>201811181033432_SeedCategoryLinkINCategoryTrue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809152106431_CreateTablesWithRelationsInitial.resx">
+      <DependentUpon>201809152106431_CreateTablesWithRelationsInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809171048401_seedCategory.resx">
+      <DependentUpon>201809171048401_seedCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809171105302_seedProductCategory.resx">
+      <DependentUpon>201809171105302_seedProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809171119026_seedSlider.resx">
+      <DependentUpon>201809171119026_seedSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809171135459_seedProducts.resx">
+      <DependentUpon>201809171135459_seedProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809192052520_AddContactUsTable.resx">
+      <DependentUpon>201809192052520_AddContactUsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810112042466_SizeClassandConfiguration.resx">
+      <DependentUpon>201810112042466_SizeClassandConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810112117136_SizeRelationWithProduct.resx">
+      <DependentUpon>201810112117136_SizeRelationWithProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810112122254_modificationsForProductNSize.resx">
+      <DependentUpon>201810112122254_modificationsForProductNSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810120716070_SeedSizeTable.resx">
+      <DependentUpon>201810120716070_SeedSizeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811172224362_PaymentMethodTables.resx">
+      <DependentUpon>201811172224362_PaymentMethodTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811172226427_SeedBankAccoutDetail.resx">
+      <DependentUpon>201811172226427_SeedBankAccoutDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811172237401_SeedWesternUnionDetail.resx">
+      <DependentUpon>201811172237401_SeedWesternUnionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811172242042_SeedEasyPaisaDetail.resx">
+      <DependentUpon>201811172242042_SeedEasyPaisaDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811180953527_AddCompanyAddressTable.resx">
+      <DependentUpon>201811180953527_AddCompanyAddressTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811180955203_SeedCompanyAddressTable.resx">
+      <DependentUpon>201811180955203_SeedCompanyAddressTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811181022308_AddSocialMediaLinkTable.resx">
+      <DependentUpon>201811181022308_AddSocialMediaLinkTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811181026023_AddCategorylinkColumnINCategory.resx">
+      <DependentUpon>201811181026023_AddCategorylinkColumnINCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811181027425_AddCategorylinkColumnINCategoryProperty.resx">
+      <DependentUpon>201811181027425_AddCategorylinkColumnINCategoryProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811181033129_SeedCategoryLinkINCategory.resx">
+      <DependentUpon>201811181033129_SeedCategoryLinkINCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811181033432_SeedCategoryLinkINCategoryTrue.resx">
+      <DependentUpon>201811181033432_SeedCategoryLinkINCategoryTrue.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Validations\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51875</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51875/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
